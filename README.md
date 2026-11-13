@@ -1,4 +1,4 @@
-# 🌊 Liquid Flow — Apple Liquid Glass Task Manager
+# 🌊MERN Task Manager
 
 A complete, production-ready, full-stack Task Management application featuring an Apple-inspired **Liquid Glass (Glassmorphism)** design system, full MERN stack architecture, TypeScript, JWT authentication, real-time analytics, interactive Kanban drag-and-drop, interactive calendar, and rich task organization.
 
@@ -7,6 +7,7 @@ A complete, production-ready, full-stack Task Management application featuring a
 ## 💎 Features & Highlights
 
 ### 1. Liquid Glass Design System (Apple-Inspired)
+
 - **Multi-layer Glass Surfaces**: Translucent cards, modals, and navigation bars with calibrated `backdrop-blur-xl`, `backdrop-blur-2xl`, and specular highlight glares.
 - **Dynamic Ambient Liquid Orbs**: Floating animated fluid gradient orbs behind the glass that illuminate and refract through components in both Light and Dark modes.
 - **Three-Way Theme System**:
@@ -16,6 +17,7 @@ A complete, production-ready, full-stack Task Management application featuring a
   - Persisted dynamically in `localStorage`.
 
 ### 2. Comprehensive Task Management (Full CRUD)
+
 - **Fields**: Title, Description, Category, Priority (Low, Medium, High, Urgent 🔥), Status (To Do, In Progress, Review, Completed), Start Date, Due Date, Tags, Subtasks with interactive checkboxes, Notes/Scratchpad.
 - **Actions**:
   - Create, view, edit, and delete tasks.
@@ -27,6 +29,7 @@ A complete, production-ready, full-stack Task Management application featuring a
   - Grid & List view layout toggling.
 
 ### 3. Multiple Workflow Views
+
 - **Productivity Dashboard**:
   - Live greeting banner with real-time digital clock and current date.
   - Liquid glass statistic cards: Total Tasks, Completed Tasks, Pending Tasks, Overdue Tasks, Today's Focus.
@@ -51,11 +54,13 @@ A complete, production-ready, full-stack Task Management application featuring a
   - Click any day to inspect tasks; click a task pill to open its detail drawer.
 
 ### 4. Custom Categories & Priority Management
+
 - Default categories: `Personal`, `Work`, `Development`, `Meetings`, `Learning`, `Shopping`, `Other`.
 - Custom category creator modal with custom color themes.
 - Delete custom categories with automatic synchronization.
 
 ### 5. In-App Notification Center
+
 - Bell notification popup with real-time unread counter badge.
 - Automatic notifications on:
   - Upcoming deadlines within 24 hours.
@@ -65,6 +70,7 @@ A complete, production-ready, full-stack Task Management application featuring a
 - Actions: Mark as read, mark all read, clear all notifications.
 
 ### 6. Authentication & User Profile
+
 - User Registration & Login with JWT Bearer authentication.
 - Password hashing using `bcryptjs`.
 - Strict user data isolation: each user accesses only their own tasks, categories, and notifications.
@@ -76,6 +82,7 @@ A complete, production-ready, full-stack Task Management application featuring a
 ## 🛠️ Technology Stack
 
 ### Frontend
+
 - **Framework**: React 18 with Vite & TypeScript
 - **Styling**: Tailwind CSS with custom Liquid Glass utility classes
 - **Motion & Interactions**: Framer Motion
@@ -86,6 +93,7 @@ A complete, production-ready, full-stack Task Management application featuring a
 - **Visual Feedback**: canvas-confetti
 
 ### Backend
+
 - **Runtime**: Node.js & Express.js with TypeScript (`tsx`)
 - **Database**: MongoDB with Mongoose ODM
 - **Zero-Config In-Memory Engine**: `mongodb-memory-server` fallback for instant out-of-the-box local development without requiring an external MongoDB service, while seamlessly connecting to any external `MONGODB_URI` when provided.
@@ -142,22 +150,30 @@ Task-Manager-App/
 ## 🚀 Getting Started
 
 ### Prerequisites
+
 - Node.js (v18 or higher recommended)
 - npm or yarn
 
 ### 1. Install Dependencies
+
 From the repository root:
+
 ```bash
 npm run install:all
 ```
-*(or run `npm install` inside both `/server` and `/client`)*
+
+_(or run `npm install` inside both `/server` and `/client`)_
 
 ### 2. Configure Environment Variables
+
 In the `server` directory, copy `.env.example` to `.env`:
+
 ```bash
 cp server/.env.example server/.env
 ```
+
 Default `.env` configuration:
+
 ```env
 PORT=5001
 MONGODB_URI=mongodb://127.0.0.1:27017/liquid_task_manager
@@ -166,14 +182,19 @@ JWT_EXPIRES_IN=7d
 CLIENT_URL=http://localhost:5173
 NODE_ENV=development
 ```
+
 > **Note**: If you don't have a local or remote MongoDB running, the server automatically starts an embedded in-memory MongoDB instance for seamless instant zero-config testing!
 
 ### 3. Run the Development Servers
+
 From the root directory:
+
 ```bash
 npm run dev
 ```
+
 Or start them individually:
+
 ```bash
 # Terminal 1 - Backend API Server (Port 5001)
 npm run dev:server
@@ -187,6 +208,7 @@ Open **`http://localhost:5173`** in your browser.
 ---
 
 ## ⚡ Instant Demo Access
+
 When the login screen loads, click **"Launch Live Demo Workspace"** to immediately sign into a preconfigured workspace with populated sample tasks, categories, overdue alerts, and productivity metrics.
 
 Or create a new account with your own credentials!
@@ -194,6 +216,7 @@ Or create a new account with your own credentials!
 ---
 
 ## ⌨️ Keyboard Shortcuts
+
 - `Cmd + K` or `Ctrl + K`: Quickly open the **New Task** modal from anywhere.
 - `/`: Focus search input to find tasks rapidly.
 - `Escape`: Close any open modal or drawer.
@@ -201,8 +224,11 @@ Or create a new account with your own credentials!
 ---
 
 ## 🧪 Production Build
+
 To test the production builds:
+
 ```bash
 npm run build
 ```
+
 Both the TypeScript backend and frontend bundle compile cleanly without warnings or errors.
