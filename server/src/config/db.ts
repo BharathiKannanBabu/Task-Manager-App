@@ -4,17 +4,27 @@ import { MongoMemoryServer } from 'mongodb-memory-server';
 let mongod: MongoMemoryServer | null = null;
 
 export const connectDB = async (): Promise<void> => {
-  const uri = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/liquid_task_manager';
+  let rawUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/liquid_task_manager';
+
+  // Normalize URI: if it ends in '/', append default database name
+  let uri = rawUri.trim();
+  if (uri.endsWith('/')) {
+    uri = `${uri}liquid_task_manager`;
+  } else if (!uri.includes('/', 10)) {
+    // e.g. mongodb://localhost:27017 without trailing slash
+    uri = `${uri}/liquid_task_manager`;
+  }
 
   try {
-    // Try connecting to provided URI with a short timeout first
+    console.log(`Connecting to local MongoDB at: ${uri}`);
     await mongoose.connect(uri, {
-      serverSelectionTimeoutMS: 2000,
+      serverSelectionTimeoutMS: 5000,
+      family: 4, // Prioritize IPv4 for local MongoDB compatibility
     });
-    console.log(`✨ Connected to external MongoDB at ${uri}`);
-  } catch (error) {
-    console.log('⚠️ Could not connect to external MongoDB daemon.');
-    console.log('🚀 Spawning embedded in-memory MongoDB engine for zero-configuration instant local development...');
+    console.log(`✨ Successfully connected to your local MongoDB at ${uri}`);
+  } catch (error: any) {
+    console.warn(`⚠️ Could not connect to ${uri}: ${error.message}`);
+    console.log('🚀 Spawning embedded in-memory MongoDB engine fallback...');
 
     try {
       mongod = await MongoMemoryServer.create({
