@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { useAuthStore } from '../../store/useAuthStore.js';
-import { useTaskStore } from '../../store/useTaskStore.js';
-import { ThemeSwitcher } from './ThemeSwitcher.js';
-import { NotificationPopover } from '../notifications/NotificationPopover.js';
+import React, { useState } from "react";
+import { useAuthStore } from "../../store/useAuthStore.js";
+import { useTaskStore } from "../../store/useTaskStore.js";
+import { ThemeSwitcher } from "./ThemeSwitcher.js";
+import { NotificationPopover } from "../notifications/NotificationPopover.js";
 import {
   Search,
   Plus,
@@ -12,8 +12,8 @@ import {
   LogOut,
   Settings,
   ChevronDown,
-} from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+} from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface NavbarProps {
   onToggleMobileSidebar: () => void;
@@ -21,7 +21,8 @@ interface NavbarProps {
 
 export const Navbar: React.FC<NavbarProps> = ({ onToggleMobileSidebar }) => {
   const { user, logout } = useAuthStore();
-  const { setIsCreateModalOpen, setIsProfileModalOpen, filters, setFilter } = useTaskStore();
+  const { setIsCreateModalOpen, setIsProfileModalOpen, filters, setFilter } =
+    useTaskStore();
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
 
   return (
@@ -45,7 +46,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onToggleMobileSidebar }) => {
             </div>
             <div>
               <span className="font-bold text-base tracking-tight bg-gradient-to-r from-slate-900 via-slate-800 to-blue-700 dark:from-white dark:via-slate-100 dark:to-sky-400 bg-clip-text text-transparent">
-                Liquid Flow
+                Task Manager
               </span>
               <span className="hidden sm:inline-block ml-2 text-[10px] tracking-wide uppercase px-1.5 py-0.5 rounded-md bg-blue-500/10 text-blue-600 dark:text-blue-400 font-semibold border border-blue-500/20">
                 PRO
@@ -61,13 +62,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onToggleMobileSidebar }) => {
             <input
               type="text"
               value={filters.search}
-              onChange={(e) => setFilter('search', e.target.value)}
+              onChange={(e) => setFilter("search", e.target.value)}
               placeholder="Search tasks, descriptions, tags... (Press /)"
               className="w-full pl-10 pr-4 py-2 text-sm rounded-xl liquid-input text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none"
             />
             {filters.search && (
               <button
-                onClick={() => setFilter('search', '')}
+                onClick={() => setFilter("search", "")}
                 className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
               >
                 Clear
@@ -103,7 +104,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onToggleMobileSidebar }) => {
                 src={
                   user?.avatar ||
                   `https://api.dicebear.com/7.x/notionists/svg?seed=${encodeURIComponent(
-                    user?.name || 'Alex'
+                    user?.name || "Alex",
                   )}`
                 }
                 alt={user?.name}
